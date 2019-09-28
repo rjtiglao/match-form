@@ -22,8 +22,8 @@ module.exports = function(app) {
 
 
     app.get("/api/friends",function(req,res){
-        res.json(data)
-    };
+        res.json(friendsData);
+    });
 
     app.post("/api/friends", function(res,req){
         //This will handle survey results
@@ -35,7 +35,7 @@ module.exports = function(app) {
         // PUT CODE HERE
 
 
-    })
+    });
 
 
 };
