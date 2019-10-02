@@ -1,18 +1,16 @@
 
 // Libraries
-const express = require("express");
+var express = require("express");
 const path = require("path");
 
 
 // constructor
 var app = express();
-const PORT = 8081;
+var PORT = process.env.PORT || 8081;
 
-
-// sets up the express app to handle data parsing
-app.unsubscribe(express.urlencoded({extended: true}));
+// Sets up the Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 
 // ROUTER
 require("./app/routing/apiRoutes")(app);

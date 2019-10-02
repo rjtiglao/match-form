@@ -7,6 +7,7 @@
 
 var friendArray = [
     {
+      routeName: "ahmed.route",
       name: "Ahmed",
       photo: "https://google.com",
       scores: [
