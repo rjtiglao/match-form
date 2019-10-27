@@ -29,14 +29,22 @@ module.exports = function(app) {
 
         var newData = req.body;
         console.log(newData);
-        friendsData.push(newData);
+        
+        var user = req.body.routeName;
+        console.log(user);
 
         // console.log(friendsData);
 
         //This will handle compatibility logic
-        // PUT CODE HERE
+        for(let i=0; friendsData.length > i; i++){
+           if(friendsData[i].scores)
+            
+            console.log(friendsData[i].scores);
+            console.log(i);
+            
+        }
 
-
+        friendsData.push(newData);
     });
 
 
