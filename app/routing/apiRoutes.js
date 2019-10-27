@@ -22,28 +22,57 @@ module.exports = function(app) {
 
     app.get("/api/friends",function(req,res){
         res.json(friendsData);
+
+
     });
 
     app.post("/api/friends", function(req,res){
         //This will handle survey results
 
         var newData = req.body;
-        console.log(newData);
+        // console.log(newData);
         
         var user = req.body.routeName;
-        console.log(user);
-
-        // console.log(friendsData);
+        var matchNum = 0;
+        var userMatch = 0;
+        var userRoute;
+        
+        
+        console.log(`hic ${parseInt(newData.scores)}`);
 
         //This will handle compatibility logic
         for(let i=0; friendsData.length > i; i++){
-           if(friendsData[i].scores)
-            
-            console.log(friendsData[i].scores);
-            console.log(i);
-            
-        }
 
+            console.log(`hic 2 ${friendsData[i].scores}`);
+            console.log(`Loop # ${i} starts now`);
+            console.log(`${friendsData[i].scores.length - 1}`);
+            console.log(`${friendsData.length}`);
+            if(friendsData.length > 0){
+                console.log("test1");
+                for(let k=0; newData.scores.length > k; k++){
+                    if(friendsData[i].scores[k] === newData.scores[k]){
+                        matchNum++
+                        console.log(`${newData.scores[k]} === ${friendsData[i].scores[k]}`);
+                        // console(`${newData.name} matches with ${friendsData[i].name} with ${matchNum} points`);
+                    };
+                };
+            };
+            console.log(`Loop # ${i} ends now`);
+
+            // if(matchNum > userMatch){
+            //     userMatch = matchNum; 
+            //     userRoute = friendsData[i].routeName;
+            // }
+
+            // matchNum = 0;
+
+            // console.log(`You found a match with ${userRoute}`);
+            // console.log(matchNum);
+            // console.log(i);
+            // console.log(friendsData[i].scores);
+            
+            
+        };
         friendsData.push(newData);
     });
 
