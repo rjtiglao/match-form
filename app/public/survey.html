@@ -164,7 +164,7 @@
         name: $("#name").val().trim(),
         photo: $("#photo").val().trim(),
         scores: [
-                parseInt($("#q1"), 10),
+                $("#q1").val().trim(),
                 $("#q2").val().trim(),
                 $("#q3").val().trim(),
                 $("#q4").val().trim(),
@@ -177,6 +177,7 @@
                 ]
         };
         console.log(newFriend)
+
         console.log($("#q2").val().trim())
       $.post("/api/friends", newFriend);
                
