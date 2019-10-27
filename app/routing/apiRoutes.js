@@ -49,16 +49,12 @@ module.exports = function(app) {
             for(let k=0; newData.scores.length > k; k++){
                 let numDiff = Math.abs(friendsData[i].scores[k] - newData.scores[k]);
                 matchNum = matchNum + numDiff;
-                // if(friendsData[i].scores[k] === newData.scores[k]){
-                //     matchNum++
-                //     console.log(`${newData.scores[k]} === ${friendsData[i].scores[k]}`);
-                //     // console(`${newData.name} matches with ${friendsData[i].name} with ${matchNum} points`);
-                // };
+
                 console.log(matchNum);
             };
             console.log(`Loop # ${i} ends now`);
 
-            if(matchNum > userMatch){
+            if(matchNum < userMatch){
                 userMatch = matchNum; 
                 console.log("match is greater than userMatch");
                 userRoute = friendsData[i].routeName;
