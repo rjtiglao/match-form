@@ -42,7 +42,7 @@ module.exports = function(app) {
 
         //This will handle compatibility logic
         for(let i=0; friendsData.length > i; i++){
-
+            let firstRound = false;
             console.log(`hic 2 ${friendsData[i].scores}`);
             console.log(`Loop # ${i} starts now`);
             console.log(`${friendsData[i].scores.length - 1}`);
@@ -53,8 +53,14 @@ module.exports = function(app) {
                 console.log(matchNum);
             };
             console.log(`Loop # ${i} ends now`);
-
-            if(matchNum < userMatch){
+    
+            if(matchNum > userMatch & firstRound === false){
+                userMatch = matchNum; 
+                console.log("First round complete");
+                userRoute = friendsData[i].routeName;
+                firstRound = true;
+            }
+            else{
                 userMatch = matchNum; 
                 console.log("match is greater than userMatch");
                 userRoute = friendsData[i].routeName;
