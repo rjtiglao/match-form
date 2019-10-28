@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://code.jquery.com/jquery.js"></script>
+    <link rel="stylesheet/less" type="text/css" href="./css/styles.less" />
+        
     <title>Compatibility Survey</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
         <!-- Your survey should have 10 questions of your choosing. Each answer should be on a scale of 1 to 5 based on how much the user agrees or disagrees with a question. -->
@@ -142,19 +145,37 @@
             </select>
             <br>
             <br>
-            <button type="submit" class="submit">Submit</button>
+            <button type="submit" class="submit btn btn-primary" data-toggle="modal" data-target="#exampleModal">Submit</button>
         </form>
         <br>
         <hr>
         <a href="/api/friends">Click for survey data.</a>
     </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body" id="userSelection"></div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
 </html>
 
 <!-- HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
 <script type="text/javascript">
-   
+
     $(".submit").on("click", function(event) {
       event.preventDefault();
         
@@ -177,16 +198,16 @@
                 ]
         };
         console.log(newFriend)
-
-        console.log($("#q2").val().trim())
       $.post("/api/friends", newFriend);
+
+//       $(".userSelection").append( "<p>Test</p>" );
                
       // This line is the magic. It"s very similar to the standard ajax function we used.
       // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
       // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
       // depending on if a tables is available or not.
-   
-
+      document.getElementById('userSelection').innerHTML = '<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>' +
+      '<button type="button" class="btn btn-primary" onclick=removeCandidateYes("' + id + '")>Yes</button>';
       
     });
   

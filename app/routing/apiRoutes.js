@@ -71,6 +71,9 @@ module.exports = function(app) {
         console.log(`${userRoute} was matched.`);
         friendsData.push(newData);
         res.json(newData);
+
+        document.getElementById('userSelection').innerHTML = '<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>' +
+      '<button type="button" class="btn btn-primary" onclick=removeCandidateYes("' + id + '")>Yes</button>';
     });
 
 
